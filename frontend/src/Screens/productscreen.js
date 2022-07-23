@@ -10,6 +10,9 @@ import Col from "react-bootstrap/Col";
 import { useEffect, useReducer } from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import LoadingBox from "../Components/LoadingBox";
+import MessageBox from "../Components/MessageBox";
+import { getError } from "../utils";
 const reducer = (state, action) => {
   switch (action.type) {
     case "FETCH_REQUEST":
@@ -37,16 +40,16 @@ const ProductScreen = () => {
         const result = await axios.get(`/api/products/slug/${slug}`);
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
       } catch (error) {
-        dispatch({ type: "FETCH_FAILED", payload: error.message });
+        dispatch({ type: "FETCH_FAILED", payload: getError(error) });
       }
     };
     fetchData();
   }, [slug]);
 
   return loading ? (
-    <div>loading...</div>
+    <LoadingBox />
   ) : error ? (
-    <div>{error}</div>
+    <MessageBox variant="danger"> {error}</MessageBox>
   ) : (
     <div>
       <Row>

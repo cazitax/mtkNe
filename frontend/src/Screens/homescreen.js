@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import logger from "use-reducer-logger";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
 import Product from "../Components/Product";
 import { Helmet } from "react-helmet-async";
+import LoadingBox from "../Components/LoadingBox";
+import MessageBox from "../Components/MessageBox";
 
 // import data from "../data";
 const reducer = (state, action) => {
@@ -49,9 +52,9 @@ const Homescreen = () => {
       <h1>Fetured data</h1>
       <div className="products">
         {loading ? (
-          <div> loading....</div>
+          <LoadingBox />
         ) : error ? (
-          <div>{error}</div>
+          <MessageBox variant="danger"> {error}</MessageBox>
         ) : (
           <Row>
             {products.map((product) => (
