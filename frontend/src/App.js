@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Homescreen from "./Screens/homescreen";
 import ProductScreen from "./Screens/productscreen";
+import SigninScreen from "./Screens/SigninScreen";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Navbar";
@@ -41,6 +42,7 @@ function App() {
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
+              <Route path="/singin" element={<SigninScreen />} />
               <Route path="/" element={<Homescreen />} />
             </Routes>
           </Container>
