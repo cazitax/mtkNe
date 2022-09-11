@@ -1,7 +1,7 @@
 const data = {
   product: [
     {
-      _id: "1",
+      // _id: "1",
       name: "nike slim shirt",
       slug: "nike-slim-shirt",
       category: "shirts",
@@ -15,7 +15,7 @@ const data = {
     },
 
     {
-      _id: "2",
+      // _id: "2",
       name: "puma slim shirt",
       slug: "puma-slim-shirt",
       category: "shirts",
@@ -29,7 +29,7 @@ const data = {
     },
     //   tamaño para imagen 679px x 829px
     {
-      _id: "3",
+      // _id: "3",
       name: "adidas slim shirt",
       slug: "adidas-slim-shirt",
       category: "shirts",
@@ -42,7 +42,7 @@ const data = {
       description: "hight wualitity shirt",
     },
     {
-      _id: "4",
+      // _id: "4",
       name: "rebook slim shirt",
       slug: "rebook-slim-shirt",
       category: "shirts",
