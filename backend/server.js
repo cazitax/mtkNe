@@ -1,11 +1,15 @@
+// import
 import express from "express";
 import data from "./data.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import seedRouter from "./routes/seedRoutes.js";
 import productRouter from "./routes/productRoutes.js";
+import userRouter from "./routes/userRoutes.js";
 
+// env
 dotenv.config();
+// db connection
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
@@ -15,13 +19,23 @@ mongoose
     console.log("ERROR: " + err.message);
   });
 // MONGOSE RETURN A PROMISE
+
+// iniciation app
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+// routes
 app.use("/api/seed", seedRouter);
-
-const port = process.env.PORT || 5000;
-
 app.use("/api/products", productRouter);
+app.use("/api/users", userRouter);
 
+// middleware
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
+});
+
+// server listening
+const port = process.env.PORT || 16000;
 app.listen(port, () => {
   console.log(`server running at http://localhost:${port}`);
 });
