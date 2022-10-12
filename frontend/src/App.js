@@ -15,12 +15,14 @@ import Badge from "react-bootstrap/esm/Badge";
 import { useContext } from "react";
 import { Store } from "./Store";
 import CartScreen from "./Screens/Cartscreen";
+import ShippingAddressScreen from "./Screens/ShippingAddressScreen";
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
   const signoutHandler = () => {
     ctxDispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem("userInfo");
+    localStorage.removeItem("shippingAddress");
   };
   return (
     <BrowserRouter>
@@ -60,7 +62,7 @@ function App() {
                     </Link>
                   </NavDropdown>
                 ) : (
-                  <Link className="nav-link" to="/signin">
+                  <Link className="nav-link  text-secondary" to="/signin">
                     {" "}
                     Sing In
                   </Link>
@@ -75,6 +77,7 @@ function App() {
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
               <Route path="/signin" element={<SigninScreen />} />
+              <Route path="/shipping" element={<ShippingAddressScreen />} />
               <Route path="/" element={<Homescreen />} />
             </Routes>
           </Container>
